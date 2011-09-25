@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Manuel</class>
+ <widget class="QDialog" name="Manuel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>472</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Manuel</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>430</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>25</x>
+     <y>11</y>
+     <width>351</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Rules of Play &lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;International checkers is played on the dark squares only of a checkerboard of 100 alternating dark and light squares, (ten rows, ten files) by two opponents having 20 checkers each of contrasting colors, nominally referred to as black and white. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The board is positioned squarely between the players and turned so that a dark square is at each player's near left side. Each player places his checkers on the dark squares of the four rows nearest him. The player with the lighter checkers makes the first move of the game, and the players take turns thereafter, making one move at a time. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The object of the game is to prevent the opponent from being able to move when it is his turn to do so. This is accomplished either by capturing all of the opponent's checkers, or by blocking those that remain so that none of them can be moved. If neither player can accomplish this, the game is a draw. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Single checkers, known as men, move forward only, one square at a time in a diagonal direction, to an unoccupied square. Men capture by jumping over an opposing man on a diagonally adjacent square to the square immediately beyond, but may do so only if this square is unoccupied. Men may jump forward or backward, and may continue jumping as long as they encounter opposing checkers with unoccupied squares immediately beyond them. Men may never jump over checkers of the same color. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A man which reaches the far side of the board becomes a king. However, if it reaches the far side by means of a jump, and is able to jump backward away from the far side over another man or king, it must do so, and does not become a king. A man reaching the far side by jumping becomes a king only if its jump, or series of jumps, terminates there. When a man becomes a king the turn to move passes to the other player, who must crown the new king by placing a checker of the same color atop it. A player is not permitted to make his own move until he crowns his opponent's king. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Kings move forward or backward any number of squares on a diagonal line to an unoccupied square. Kings capture from any distance along a diagonal line by jumping, forward or backward, over an opposing man or king with at least one unoccupied square immediately beyond it. The capturing king then lands on any one of these unoccupied squares (except as noted in rule 7) and continues jumping, if possible, either on the same line, or by making a right angle turn onto another diagonal line. Kings may never jump over checkers of the same color. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Whenever a player is able to make a capture he must do so. When there is more than one way to jump, a player must choose a sequence of jumps which results in the capture of the greatest possible number of opposing units, men and kings each counting as one unit. A &amp;quot;huff&amp;quot; of a checker for failure to jump properly is not permitted. The incorrect move must be retracted, and a correct move must be made. If possible, the correct move must be made with the man or king originally moved incorrectly. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A man or king may not jump over the same opposing man or king more than once. &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Captured checkers are not removed from the board until all jumps made on the move are completed, and the hand is removed from the capturing man or king. (It is only in rare instances that rules 8 or 9 affect the play of a game. They can have the effect of reducing the number of captures possible on a move. In most of these cases a king is the capturing piece. On very rare occasions these rules, either separately or in combination, willresult in a king being forced to terminate a series of jumps on a square from which it will then be captured by an opposing man or king which itself would have been captured were it not for these rules.) &lt;/li&gt;
+&lt;li style=&quot; font-size:8pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Time limits for play are based on a fixed amount of time for a given number of moves, without regard to how much of this time is used on any one move. When the given number of moves has been made by each player, with neither having used up the allotted time, an additional allotment of time and moves is given to each. This continues until the conclusion of the game. Unused time is retained when a new allotment is given. A player loses a game if his time expires before he has completed the required number of moves. &lt;/li&gt;&lt;/ol&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;source: &lt;/span&gt;&lt;a href=&quot;http://www.setupgroup.com/xo/in_checkers.php&quot;&gt;&lt;span style=&quot; font-size:8pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.setupgroup.com/xo/in_checkers.php&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+   <property name="openLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Manuel</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Manuel</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
