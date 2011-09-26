@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>images/black.bmp</file>
         <file>images/white.bmp</file>
-        <file>images/redTile.png</file>
         <file>images/orange.bmp</file>
         <file>images/redTile2.png</file>
         <file>images/greenTile.png</file>
@@ -21,9 +20,6 @@
         <file>images/8.png</file>
         <file>images/9.png</file>
         <file>images/10.png</file>
-        <file>images/Arrow_left.png</file>
-        <file>images/Arrow_right.png</file>
-        <file>images/Book.png</file>
         <file>images/Clock.png</file>
         <file>images/Gears.png</file>
         <file>images/new.png</file>
@@ -31,5 +27,7 @@
         <file>images/printer.png</file>
         <file>images/floppy_disk.png</file>
         <file>images/Folder.png</file>
+        <file>images/kingRedTile.png</file>
+        <file>images/kingGreenTile.png</file>
     </qresource>
 </RCC>
