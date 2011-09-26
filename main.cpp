@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     GameLogic *gameLogic = new GameLogic(player1, player2, gameField, fenetre);
     gameLogic->start();
-
+    //est ce vraiment utile?
     fenetre->show();
 
     return app.exec();

@@ -349,17 +349,19 @@ void GameLogic::removeTile(int relativeRow, int relativeColumn){
     this->gameField->getField(selectedTile->getRow() + relativeRow, selectedTile->getColumn() + relativeColumn)->setTile(0);
     tileToRemove->hide();
     //delete tileToRemove;
+    if(actuelPlayer->getName() == "player1" && destinationField->getRow() == 0){
+         QPixmap greenKingTile(":/images/kingGreenTile.png");
+         selectedTile->setPixmap(greenKingTile);
+         selectedTile->setType("King");
+    }
+    if(actuelPlayer->getName() == "player2" && destinationField->getRow() == Data::NUMBER_ROWS - 1){
+         QPixmap redKingTile(":/images/kingRedTile.png");
+         selectedTile->setPixmap(redKingTile);
+         selectedTile->setType("king");
+    }
     gameField->getGameFieldLayout()->addWidget(selectedTile, destinationField->getRow(), destinationField->getColumn(), Qt::AlignHCenter);
     this->selectedTile->setRow(this->destinationField->getRow());
     this->selectedTile->setColumn(this->destinationField->getColumn());
-    QString text = QString::number(tileToRemove->getRow())+", "+QString::number(tileToRemove->getColumn())+", "+tileToRemove->getPlayerName()+", "+selectedTile->getPlayerName();
-    if (tileToRemove->isVisible()){
-        text += " vis";
-    }else{
-        text += " inv";
-    }
-
-    this->getGameField()->getLabelPlayer1()->setText(text);
     isTileSelected = false;
     selectedTile = 0;
     if(!canTakeTile(this->getGameField()->getField(destinationField->getRow(), destinationField->getColumn())->getTile())){
