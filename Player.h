@@ -14,9 +14,13 @@ public:
     QColor getColor();
     Tile* getTile(int i);
     QString getDirection();
+    int getAdverseRemovedTile();
+    void addAdverseRemovedTile();
      ~Player();
 
 private:
+     int adverseRemovedTile;
+
     QString name;
 
     QColor color;

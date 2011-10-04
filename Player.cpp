@@ -5,6 +5,7 @@ Player::Player(QString name, QColor col, QString direction){
     this->name = name;
     this->color = col;
     this->direction = direction;
+    adverseRemovedTile = 0;
     QPixmap greenTile(":/images/greenTile.png");
     QImage greenTileImage = greenTile.toImage();
     QPixmap greenTile2 = QPixmap::fromImage(greenTileImage.scaled(Data::WIDTH_TILE, Data::HEIGTH_TILE, Qt::IgnoreAspectRatio, Qt::FastTransformation), Qt::AutoColor);
@@ -47,6 +48,14 @@ Tile* Player::getTile(int i){
 
 QString Player::getDirection(){
     return direction;
+}
+
+int Player::getAdverseRemovedTile(){
+    return adverseRemovedTile;
+}
+
+void Player::addAdverseRemovedTile(){
+    adverseRemovedTile++;
 }
 
 Player::~Player(){

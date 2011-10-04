@@ -15,6 +15,7 @@ GameLogic::GameLogic(Player *p1, Player *p2, GameField *gameField, MainWindow *m
     //somethingHasChanged = false;
     selectedTile = 0;
     destinationField = 0;
+    takeAlsoTheNextTile = false;
 }
 
 void GameLogic::start(){
@@ -69,16 +70,21 @@ void GameLogic::restart(){
     this->mainWindow->setCentralWidget(gameField);
     actuelPlayer = this->chooseFirstPlayer();
     isTileSelected = false;
-    //somethingHasChanged = false;
     selectedTile = 0;
     destinationField = 0;
+    takeAlsoTheNextTile = false;
     this->start();
 }
 
 void GameLogic::selectTile(){
-    this->selectedTile = qobject_cast<Tile*>(sender());
-    //this->playSelectedSound();
-    //this->isTileSelected = true;
+    if(!takeAlsoTheNextTile){
+        this->selectedTile = qobject_cast<Tile*>(sender());
+    }else if(selectedTile != 0){
+       Tile * testTile = qobject_cast<Tile*>(sender());
+       if(!(testTile->getRow() == selectedTile->getRow() && testTile->getColumn() == selectedTile->getColumn())){
+           error();
+       }
+    }
 }
 
 void GameLogic::selectDest(){
@@ -92,17 +98,21 @@ QString GameLogic::getNormalDirection(Tile *tile){
 
     QString direction;
 
-    if(player1->getName() == tile->getPlayerName()){
-        direction = player1->getDirection();
-    }else{
-        direction = player2->getDirection();
-    }
+    if(tile->getType() == "normal"){
+        if(player1->getName() == tile->getPlayerName()){
+            direction = player1->getDirection();
+        }else{
+            direction = player2->getDirection();
+        }
 
-    if (direction == "toTheTop"){
-        return "toTheTop";
-    }else if(direction == "toTheBottom"){
-        return "toTheBottom";
-    }else{
+        if (direction == "toTheTop"){
+            return "toTheTop";
+        }else if(direction == "toTheBottom"){
+            return "toTheBottom";
+        }else{
+            return "allDirection";
+        }
+    }else {
         return "allDirection";
     }
 }
@@ -261,8 +271,7 @@ void GameLogic::selectPossibleNeighborsWhereToPlay(){
 
     if(!canTakeTile()){
         //select the direct neighbors: it is only a move
-        if(isTileOfActuelPlayer(selectedTile) && (this->getNormalDirection(selectedTile) == "toTheBottom"
-                                                  || this->getNormalDirection(selectedTile) == "allDirection")){
+        if(isTileOfActuelPlayer(selectedTile) && this->getNormalDirection(selectedTile) == "toTheBottom"){
              if(myRow + 1 < Data::NUMBER_ROWS){
                    if (myColumn - 1 >= 0){
                         if( this->gameField->getField(myRow + 1, myColumn - 1)->getIsFree()){
@@ -279,8 +288,7 @@ void GameLogic::selectPossibleNeighborsWhereToPlay(){
                          }
                     }
               }
-       }else if(isTileOfActuelPlayer(selectedTile) && (this->getNormalDirection(selectedTile) == "toTheTop"
-                                                       || this->getNormalDirection(selectedTile) == "allDirection")){
+       }else if(isTileOfActuelPlayer(selectedTile) && this->getNormalDirection(selectedTile) == "toTheTop"){
              if(myRow - 1 >= 0){
                   if(myColumn - 1 >= 0){
                        if(this->gameField->getField(myRow - 1, myColumn - 1)->getIsFree()){
@@ -295,6 +303,37 @@ void GameLogic::selectPossibleNeighborsWhereToPlay(){
                        }
                  }
            }
+      }else if(isTileOfActuelPlayer(selectedTile) &&  this->getNormalDirection(selectedTile) == "allDirection"){
+          if(myRow + 1 < Data::NUMBER_ROWS){
+                if (myColumn - 1 >= 0){
+                     if( this->gameField->getField(myRow + 1, myColumn - 1)->getIsFree()){
+                          this->gameField->getField(myRow + 1, myColumn - 1)->setPixmap(orangePixmap);
+                          QTimer::singleShot(Data::DELAY_TO_SHOW_DESTINATION_FIELD, this->gameField->getField(myRow + 1, myColumn - 1),
+                                             SLOT(renewBlackColor()));
+                         }
+                     }
+                if(myColumn + 1 < Data::NUMBER_COLUMNS){
+                     if(this->gameField->getField(myRow + 1, myColumn + 1)->getIsFree()){
+                          this->gameField->getField(myRow + 1, myColumn + 1)->setPixmap(orangePixmap);
+                          QTimer::singleShot(Data::DELAY_TO_SHOW_DESTINATION_FIELD, this->gameField->getField(myRow + 1, myColumn + 1),
+                                             SLOT(renewBlackColor()));
+                      }
+                 }
+           }
+          if(myRow - 1 >= 0){
+               if(myColumn - 1 >= 0){
+                    if(this->gameField->getField(myRow - 1, myColumn - 1)->getIsFree()){
+                        this->gameField->getField(myRow - 1, myColumn - 1)->setPixmap(orangePixmap);
+                        QTimer::singleShot(Data::DELAY_TO_SHOW_DESTINATION_FIELD, gameField->getField(myRow - 1, myColumn - 1), SLOT(renewBlackColor()));
+                    }
+               }
+               if(myColumn + 1 < Data::NUMBER_COLUMNS){
+                    if(this->gameField->getField(myRow - 1, myColumn + 1)->getIsFree()){
+                        this->gameField->getField(myRow - 1, myColumn + 1)->setPixmap(orangePixmap);
+                        QTimer::singleShot(Data::DELAY_TO_SHOW_DESTINATION_FIELD, gameField->getField(myRow - 1, myColumn + 1), SLOT(renewBlackColor()));
+                    }
+              }
+        }
       }else{
           error();
       }
@@ -466,16 +505,22 @@ void GameLogic::removeTile(int relativeRow, int relativeColumn){
     this->makeKingIfPossible();
     gameField->getGameFieldLayout()->removeWidget(selectedTile);
     gameField->getGameFieldLayout()->addWidget(selectedTile, destinationField->getRow(), destinationField->getColumn(), Qt::AlignHCenter);
+    this->playSelectedSound();
     this->selectedTile->setRow(this->destinationField->getRow());
     this->selectedTile->setColumn(this->destinationField->getColumn());
     destinationField->setTile(selectedTile);
+    this->actuelPlayer->addAdverseRemovedTile();
+    this->showTheWinnerIfThereIsOne();
 
-    selectedTile = 0;
-
-    changeActuelPlayer();
+    if(!this->canTakeTile()){
+        changeActuelPlayer();
+        selectedTile = 0;
+        takeAlsoTheNextTile = false;
+    }else{
+        //the actuel Player has to remove the next removable adverse tile
+        takeAlsoTheNextTile = true;
+    }
     destinationField = 0;
-
-    this->playSelectedSound();
 }
 
 void GameLogic::makeKingIfPossible(){
@@ -487,7 +532,14 @@ void GameLogic::makeKingIfPossible(){
      if(actuelPlayer->getName() == "player2" && destinationField->getRow() == Data::NUMBER_ROWS - 1){
           QPixmap redKingTile(":/images/kingRedTile.png");
           selectedTile->setPixmap(redKingTile);
-          selectedTile->setType("king");
+          selectedTile->setType("King");
      }
+}
+
+void GameLogic::showTheWinnerIfThereIsOne(){
+    if(this->actuelPlayer->getAdverseRemovedTile() == Data::NUMBER_TILES){
+        QString s =  "The winner ist : "+actuelPlayer->getName();
+        QMessageBox::information(mainWindow, "Game over", s);
+    }
 }
 

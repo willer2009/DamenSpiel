@@ -20,7 +20,7 @@ private:
     Tile *selectedTile;
     bool isTileSelected;
     int numberRemovedTile;
-    //bool somethingHasChanged;
+    bool takeAlsoTheNextTile;
 
 public:
     GameLogic(Player *p1, Player *p2, GameField *gameField, MainWindow *mainWindow);
@@ -32,6 +32,7 @@ public:
    // GameField* getGameField();
 
 
+    void showTheWinnerIfThereIsOne();
 
     bool isPossibleToMove();
 
