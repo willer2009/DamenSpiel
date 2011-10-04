@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>sounds/click.wav</file>
+        <file>sounds/move.wav</file>
+        <file>sounds/notPossible.aif</file>
+    </qresource>
+</RCC>

@@ -16,7 +16,6 @@ public:
     void mousePressEvent(QMouseEvent *ev);
     Field* getField(int i, int j);
     QGridLayout* getGameFieldLayout();
-    void paintEvent(QPaintEvent *pe);
     QLabel *getLabelPlayer1();
 
     void setLabelPlayer1(QString text);

@@ -21,7 +21,8 @@ HEADERS += \
     manuel.h
 
 RESOURCES += \
-    images.qrc
+    images.qrc \
+    sounds.qrc
 
 FORMS += \
     dialog.ui \

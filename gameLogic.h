@@ -20,16 +20,16 @@ private:
     Tile *selectedTile;
     bool isTileSelected;
     int numberRemovedTile;
-    bool somethingHasChanged;
+    //bool somethingHasChanged;
 
 public:
     GameLogic(Player *p1, Player *p2, GameField *gameField, MainWindow *mainWindow);
 
-    Player* getPlayer1();
+    //Player* getPlayer1();
 
-    Player* getPlayer2();
+   // Player* getPlayer2();
 
-    GameField* getGameField();
+   // GameField* getGameField();
 
 
 
@@ -45,7 +45,9 @@ public:
 
     Tile* getTileToremove(int i, int j);
 
-   void removeTile(int relativeRow, int relativeColumn);
+    void removeTile(int relativeRow, int relativeColumn);
+
+    void makeKingIfPossible();
 
     /**
       *  tell you if there is an adverse tile to take or not
@@ -56,15 +58,19 @@ public:
 
     bool isTileOfActuelPlayer(Tile *tile);
 
-    bool canTakeTileSomewhere();
+    //bool canTakeTileSomewhere();
 
-    bool canTakeTile(Tile *selectedTile);
+    //bool canTakeTile(Tile *selectedTile);
 
     void setTime(QLabel* label);
 
     void start();
 
+    void playSelectedSound();
 
+    void playMoveSound();
+
+    void error();
 
 public slots:
         void selectTile();

@@ -112,17 +112,6 @@ QGridLayout* GameField::getGameFieldLayout(){
     return this->gameFieldLayout;
 }
 
-void GameField::paintEvent(QPaintEvent *pe){
-//    QStyleOption styleOption;
-//    styleOption.init(this);
-//    QPainter painter(this);
-//    style()->drawPrimitive(QStyle::PE_Widget, &styleOption, &painter, this);
-
-//    QPainter* pPainter = new QPainter(this);
-//    pPainter->drawPixmap(rect(), QPixmap(":/images/cadre.jpeg"));
-//    delete pPainter;
-//    QWidget::paintEvent(pe);
-}
 
 QLabel* GameField::getLabelPlayer1(){
     return labelPlayer1;

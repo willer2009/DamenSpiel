@@ -35,7 +35,7 @@ private:
     int row;
     int column;
     bool isFree;
-    bool isClicked;
+    //bool isClicked;
     Tile* tile;
 };
 

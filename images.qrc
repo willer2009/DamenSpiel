@@ -29,5 +29,6 @@
         <file>images/Folder.png</file>
         <file>images/kingRedTile.png</file>
         <file>images/kingGreenTile.png</file>
+        <file>images/Book.png</file>
     </qresource>
 </RCC>

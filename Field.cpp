@@ -11,7 +11,7 @@ Field::Field(QColor color, int row, int column) :
     this->row = row;
     this->column = column;
     isFree = true;
-    isClicked = false;
+    //isClicked = false;
     tile = 0;
     if (internColor == Qt::black){
         QPixmap blackPixmap(":/images/black.bmp");
@@ -45,9 +45,9 @@ void Field::renewBlackColor(){
 bool Field::getIsFree(){
     return this->isFree;
 }
-bool Field::getIsClicked(){
+/*bool Field::getIsClicked(){
     return isClicked;
-}
+}*/
 int Field::getRow(){
     return row;
 }
