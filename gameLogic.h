@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "GameField.h"
 #include "MainWindow.h"
+#include <phonon/phonon>
 
 class GameLogic: public QObject{
     Q_OBJECT
@@ -24,13 +25,6 @@ private:
 
 public:
     GameLogic(Player *p1, Player *p2, GameField *gameField, MainWindow *mainWindow);
-
-    //Player* getPlayer1();
-
-   // Player* getPlayer2();
-
-   // GameField* getGameField();
-
 
     void showTheWinnerIfThereIsOne();
 
@@ -71,7 +65,9 @@ public:
 
     void playMoveSound();
 
-    void error();
+    void playErrorSound();
+
+    virtual ~GameLogic();
 
 public slots:
         void selectTile();

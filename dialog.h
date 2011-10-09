@@ -13,19 +13,27 @@ class Dialog : public QDialog
 
 public:
     explicit Dialog(QWidget *parent = 0);
-    bool getStatus();
+
+    /**
+      *    return true if the checkBox is checked and false if not
+      */
+    bool getStatus() const;
+
+    /**
+      *    check the checkbox
+      */
     void check();
+
+    /**
+      *    uncheck the checkbox
+      */
     void uncheck();
     ~Dialog();
 
 private:
     Ui::Dialog *ui;
 public slots:
-    //virtual void  accept();
 
-/*signals:
-    showCurrentPlayer();
-    hideCurrentPlayer();*/
 };
 
 #endif // DIALOG_H

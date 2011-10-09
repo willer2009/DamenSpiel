@@ -7,19 +7,19 @@ Tile::Tile(QString type, int row, int column, QString playerName){
     this->playerName = playerName;
 }
 
-QString Tile::getType(){
+QString Tile::getType() const{
     return this->type;
 }
 
-QString Tile::getPlayerName(){
+QString Tile::getPlayerName() const{
     return this->playerName;
 }
 
-int Tile::getRow(){
+int Tile::getRow() const{
     return this->row;
 }
 
-int Tile::getColumn(){
+int Tile::getColumn() const{
     return this->column;
 }
 
@@ -43,4 +43,11 @@ void Tile::mousePressEvent(QMouseEvent *ev){
     if (ev->button() == Qt::LeftButton){
         emit clicked();
     }
+}
+
+bool Tile::operator ==(Tile const& tile1){
+    return tile1.row == row && tile1.column == this->column && tile1.playerName == this->playerName && tile1.type == this->type;
+}
+
+Tile::~Tile(){
 }

@@ -13,14 +13,7 @@ Dialog::~Dialog()
     delete ui;
 }
 
-/*void Dialog::on_buttonBox_accepted(){
-    if(ui->checkBox->checkState() == Qt::Checked){
-        emit showCurrentPlayer();
-    }else{
-        emit hideCurrentPlayer();
-    }
-}*/
-bool Dialog::getStatus(){
+bool Dialog::getStatus() const{
     if(this->ui->checkBox->checkState() == Qt::Checked){
         return true;
     }else{

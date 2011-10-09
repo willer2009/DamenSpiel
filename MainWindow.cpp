@@ -165,3 +165,29 @@ void MainWindow::showManuel(){
 Dialog* MainWindow::getSettingsDialog(){
    return settings;
 }
+
+MainWindow::~MainWindow(){
+
+    delete this->fileMenu;
+    delete this->settingsMenu;
+    delete this->helpMenu;
+
+    delete this->newGameAction;
+    delete this->openAction;
+    delete this->saveAction;
+    delete this->saveIntoAction;
+    delete this->printAction;
+    delete this->quitAction;
+
+    delete this->preferenceAction;
+    delete this->manualAction;
+    delete this->aboutAction;
+
+    delete this->toolBarFile;
+    delete this->toolBarSettings;
+    delete this->toolBarHelp;
+
+    delete this->settings;
+    delete this->manuel;
+
+}

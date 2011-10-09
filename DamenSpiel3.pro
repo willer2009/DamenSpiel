@@ -27,3 +27,10 @@ RESOURCES += \
 FORMS += \
     dialog.ui \
     manuel.ui
+
+QT += multimedia
+QT += phonon
+
+
+
+

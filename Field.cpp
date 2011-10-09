@@ -3,7 +3,7 @@
 #include <QPixmap>
 #include <QPainter>
 
-Field::Field(QColor color, int row, int column) :
+Field::Field(QString color, int row, int column) :
     QLabel()
 {
     this->setFixedSize(Data::WIDTH_FIELD, Data::HEIGTH_FIELD);
@@ -13,10 +13,10 @@ Field::Field(QColor color, int row, int column) :
     isFree = true;
     //isClicked = false;
     tile = 0;
-    if (internColor == Qt::black){
+    if (internColor == "black"){
         QPixmap blackPixmap(":/images/black.bmp");
         this->setPixmap(blackPixmap);
-    } else if (internColor == Qt::white){
+    } else if (internColor == "white"){
         QPixmap whitePixmap(":/images/white.bmp");
         this->setPixmap(whitePixmap);
     }
@@ -56,7 +56,7 @@ int Field::getColumn(){
     return column;
 }
 
-QColor Field::getInternColor(){
+QString Field::getInternColor(){
     return internColor;
 }
 void Field::setTile(Tile* newTile){
@@ -68,4 +68,8 @@ void Field::setFree(bool b){
 
 Tile* Field::getTile() const{
     return tile;
+}
+
+Field::~Field(){
+
 }

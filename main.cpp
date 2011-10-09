@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 
     GameField *gameField = new GameField;
 
-    Player *player1 = new Player("player1", Qt::green, "toTheTop");
-    Player *player2 = new Player("player2", Qt::gray, "toTheBottom");
+    Player *player1 = new Player("player1", "green", "toTheTop");
+    Player *player2 = new Player("player2", "red", "toTheBottom");
 
     MainWindow *fenetre = new MainWindow();
 

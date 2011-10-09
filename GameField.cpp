@@ -28,10 +28,10 @@ GameField::GameField(): QWidget()
     QLabel *borderLeftLabel = new QLabel;
     borderLeftLabel->setPixmap(borderLeft);
 
-    labelPlayer1 = new QLabel(" play: ");
-    labelPlayer1->setFont(QFont("Commic Sans MS", 16, QFont::Bold, true));
-    labelPlayer1->setTextFormat(Qt::RichText);
-    labelPlayer1->setText("Play :  <img src= ':/images/greenTile.png'> ");
+    labelActuelPlayer = new QLabel(" play: ");
+    labelActuelPlayer->setFont(QFont("Commic Sans MS", 16, QFont::Bold, true));
+    labelActuelPlayer->setTextFormat(Qt::RichText);
+    labelActuelPlayer->setText("Play :  <img src= ':/images/greenTile.png'> ");
 
     QLabel *borderBottomLeftLabel = new QLabel;
     borderBottomLeftLabel->setPixmap(borderBottomLeft);
@@ -43,16 +43,14 @@ GameField::GameField(): QWidget()
     borderTopRightLabel->setPixmap(borderTopRight);
 
     gameFieldLayout = new QGridLayout;
-    QColor blackColor = Qt::black;
-    QColor whiteColor = Qt::white ;
 
     for (int i = 0; i < Data::NUMBER_ROWS; i++){
         for(int j = 0; j < Data::NUMBER_COLUMNS; j++){
 
             if ((i % 2 == 0 && j % 2 == 0) ||(i % 2 == 1 && j % 2 == 1)){
-                fields[i][j] = new Field(blackColor, i, j);
+                fields[i][j] = new Field("black", i, j);
             } else {
-                fields[i][j] = new Field(whiteColor, i, j);
+                fields[i][j] = new Field("white", i, j);
             }
            gameFieldLayout->addWidget(fields[i][j], i, j);
 
@@ -75,7 +73,7 @@ GameField::GameField(): QWidget()
 
     borderLayout->addWidget(borderBottomLeftLabel, 11, 0, 1, 1);
     borderLayout->addWidget(borderBottomLabel, 11, 1, 1, 10);
-    borderLayout->addWidget(labelPlayer1, 11, 1, 1, 10, Qt::AlignCenter);
+    borderLayout->addWidget(labelActuelPlayer, 11, 1, 1, 10, Qt::AlignCenter);
     borderLayout->addWidget(borderBottomRightLabel, 11, 11, 1, 1);
 
     borderLayout->setHorizontalSpacing(0);
@@ -96,11 +94,11 @@ GameField::GameField(): QWidget()
 
 }
 
-void GameField::mousePressEvent(QMouseEvent *ev){
+/*void GameField::mousePressEvent(QMouseEvent *ev){
     if(ev->button() == Qt::LeftButton){
          emit clicked();
     }
-}
+}/*/
 
 
 
@@ -113,14 +111,17 @@ QGridLayout* GameField::getGameFieldLayout(){
 }
 
 
-QLabel* GameField::getLabelPlayer1(){
-    return labelPlayer1;
+QLabel* GameField::getLabelActuelPlayer(){
+    return labelActuelPlayer;
 }
 
-void GameField::setLabelPlayer1(QString text){
-    this->labelPlayer1->setText(text);
+void GameField::setLabelActuelPlayer(QString text){
+    this->labelActuelPlayer->setText(text);
 }
 
 GameField::~GameField(){
-
+/**
+  All the pointer in this class are positionned on a Layout which will be recursivly destroyed,
+  when the Qwidget(parent) will be destroy, so we don't need to do anything.
+  */
 }

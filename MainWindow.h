@@ -14,10 +14,42 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-        public:
-               MainWindow();
-               Dialog* getSettingsDialog();
 
+private:
+
+       //GameLogic * gameLogic;
+       QMenu * fileMenu;
+       //QMenu * editMenu;
+       QMenu * settingsMenu;
+       QMenu * helpMenu;
+
+       QAction *newGameAction;
+       QAction *openAction;
+       QAction *saveAction;
+       QAction *saveIntoAction;
+       QAction *printAction;
+       QAction *quitAction;
+
+       // QAction *undoAction;
+       //QAction *redoAction;
+
+       QAction *preferenceAction;
+
+       QAction *manualAction;
+       QAction *aboutAction;
+
+       QToolBar *toolBarFile;
+       //QToolBar *toolBarEdit;
+       QToolBar *toolBarSettings;
+       QToolBar *toolBarHelp;
+
+       Dialog *settings;
+       Manuel *manuel;
+
+public:
+       MainWindow();
+       Dialog* getSettingsDialog();
+       virtual ~MainWindow();
 
 public slots:
                void underConstruction();
@@ -29,35 +61,6 @@ public slots:
         signals:
                void restartGame();
                //void signalChangeCurrentPlayer();
-        private:
 
-               //GameLogic * gameLogic;
-               QMenu * fileMenu;
-               //QMenu * editMenu;
-               QMenu * settingsMenu;
-               QMenu * helpMenu;
-
-               QAction *newGameAction;
-               QAction *openAction;
-               QAction *saveAction;
-               QAction *saveIntoAction;
-               QAction *printAction;
-               QAction *quitAction;
-
-              // QAction *undoAction;
-               //QAction *redoAction;
-
-               QAction *preferenceAction;
-
-               QAction *manualAction;
-               QAction *aboutAction;
-
-               QToolBar *toolBarFile;
-               //QToolBar *toolBarEdit;
-               QToolBar *toolBarSettings;
-               QToolBar *toolBarHelp;
-
-               Dialog *settings;
-               Manuel *manuel;
 };
 #endif // MAINWINDOW_H
