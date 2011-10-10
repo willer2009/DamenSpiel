@@ -6,7 +6,9 @@
 namespace Ui {
     class Dialog;
 }
-
+/**
+  * class which represents the dialog window to ask if we want to always show the current player during the gameplay
+  */
 class Dialog : public QDialog
 {
     Q_OBJECT

@@ -5,7 +5,9 @@
 #include <QMouseEvent>
 
 #include "tile.h"
-
+/**
+  * class which represents a field in the game area
+  */
 class Field : public QLabel
 {
     Q_OBJECT

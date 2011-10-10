@@ -105,10 +105,10 @@ MainWindow::MainWindow()
 
 }
 
-void MainWindow::underConstruction(){
-    QMessageBox::warning(this, "test", "under Construction", 0, 0, 0);
+//void MainWindow::underConstruction(){
+//    QMessageBox::warning(this, "test", "under Construction", 0, 0, 0);
 
-}
+//}
 
 void MainWindow::about(){
     QMessageBox::aboutQt(this, tr("About"));
@@ -144,10 +144,23 @@ void MainWindow::startNewGame(){
     int response = QMessageBox::question(this, tr("New game"),
                                          tr("Are you sure you want to start a new game? Your current game will be lost.")
                                          , QMessageBox::Yes | QMessageBox::No);
-    if(response){
+    if(response == QMessageBox::Yes){
         //send a signal to the logic to restart the game
         emit restartGame();
     }
+ /*  QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("New game"));
+    msgBox.setText( tr("Are you sure you want to start a new game? Your current game will be lost."));
+    QPushButton *connectButton = msgBox.addButton(tr("Yes"), QMessageBox::ActionRole);
+    QPushButton *abortButton = msgBox.addButton(QMessageBox::Abort);
+
+    msgBox.exec();
+
+    if (msgBox.clickedButton() == connectButton) {
+         emit restartGame();
+    } else if (msgBox.clickedButton() == abortButton) {
+        // do nothing
+    }*/
 
 }
 

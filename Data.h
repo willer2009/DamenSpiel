@@ -1,6 +1,9 @@
 #ifndef DATA_H
 #define DATA_H
 
+/**
+  * class which represents all the constant datas(parameter values) we need in the game
+  */
 class Data{
    public:
     //width of the game area

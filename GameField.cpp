@@ -28,10 +28,20 @@ GameField::GameField(): QWidget()
     QLabel *borderLeftLabel = new QLabel;
     borderLeftLabel->setPixmap(borderLeft);
 
-    labelActuelPlayer = new QLabel(" play: ");
+    labelActuelPlayer = new QLabel(" ");
     labelActuelPlayer->setFont(QFont("Commic Sans MS", 16, QFont::Bold, true));
     labelActuelPlayer->setTextFormat(Qt::RichText);
     labelActuelPlayer->setText("Play :  <img src= ':/images/greenTile.png'> ");
+
+    removedTilePlayer1 = new QLabel(" ");
+    removedTilePlayer1->setFont(QFont("Commic Sans MS", 16, QFont::Bold, true));
+    removedTilePlayer1->setTextFormat(Qt::RichText);
+    removedTilePlayer1->setText(" <img src= ':/images/redTile2.png'> : 00 ");
+
+    removedTilePlayer2 = new QLabel(" ");
+    removedTilePlayer2->setFont(QFont("Commic Sans MS", 16, QFont::Bold, true));
+    removedTilePlayer2->setTextFormat(Qt::RichText);
+    removedTilePlayer2->setText("<img src= ':/images/greenTile.png'> : 00 ");
 
     QLabel *borderBottomLeftLabel = new QLabel;
     borderBottomLeftLabel->setPixmap(borderBottomLeft);
@@ -64,12 +74,15 @@ GameField::GameField(): QWidget()
 
     borderLayout->addWidget(borderTopLeftLabel, 0, 0, 1, 1);
     borderLayout->addWidget(borderTopLabel, 0, 1, 1, 10);
-   // borderLayout->addWidget(labelPlayer2, 0, 1, 1, 10, Qt::AlignCenter);
     borderLayout->addWidget(borderTopRightLabel, 0, 11, 1, 1);
 
     borderLayout->addWidget(borderLeftLabel, 1, 0, 10, 1);
     borderLayout->addLayout(gameFieldLayout, 1, 1, 10, 10, Qt::AlignHCenter);
     borderLayout->addWidget(borderRightLabel, 1, 11, 10, 1);
+
+    borderLayout->addWidget(removedTilePlayer1, 0, 1, 1, 10, Qt::AlignLeft);
+    borderLayout->addWidget(removedTilePlayer2, 0, 1, 1, 10, Qt::AlignRight);
+
 
     borderLayout->addWidget(borderBottomLeftLabel, 11, 0, 1, 1);
     borderLayout->addWidget(borderBottomLabel, 11, 1, 1, 10);
@@ -78,17 +91,6 @@ GameField::GameField(): QWidget()
 
     borderLayout->setHorizontalSpacing(0);
     borderLayout->setVerticalSpacing(0);
-
-//     QWidget *around = new QWidget();
-//     QGridLayout *baseLayout = new QGridLayout;
-//     baseLayout->setGeometry(QRect(0, 0, 250, 250));
-//     QLabel border(around);
-//     Q
-//     QPixmap pixmap(":/images/cadre.jpg");
-//     border.setPixmap(pixmap);
-//     baseLayout->addWidget(border, 0, 0);
-//     baseLayout->addWidget(gameFieldLayout);
-
 
     setLayout(borderLayout);
 
@@ -115,9 +117,18 @@ QLabel* GameField::getLabelActuelPlayer(){
     return labelActuelPlayer;
 }
 
+QLabel * GameField::getLabelRemovedTilePlayer1(){
+    return this->removedTilePlayer1;
+}
+
+QLabel * GameField::getLabelRemovedTilePlayer2(){
+    return this->removedTilePlayer2;
+}
+
 void GameField::setLabelActuelPlayer(QString text){
     this->labelActuelPlayer->setText(text);
 }
+
 
 GameField::~GameField(){
 /**

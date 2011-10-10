@@ -3,6 +3,10 @@
 
 #include<QtGui>
 
+/**
+  * class which represents a tile in the game
+  */
+
 class Tile : public QLabel{
     Q_OBJECT
 

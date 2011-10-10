@@ -1,10 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-//#include<QString>
-//#include<QColor>
-//#include <QImage>
 #include "Tile.h"
+
+/**
+  * class which represents a player in the game
+  */
 
 class Player{
 private:
@@ -49,7 +50,7 @@ public:
     //compare to player object and returns true if the attributs of the two player contains the same values
     bool operator ==(Player const& player);
 
-    //destro a player
+    //destroy a player
     ~Player();
 };
 

@@ -7,7 +7,9 @@
 #include <QMouseEvent>
 #include <QFont>
 #include "Data.h"
-
+/**
+  * class which represents the whole game area
+  */
 class GameField : public QWidget
 {
     Q_OBJECT
@@ -48,6 +50,13 @@ public:
 
     //return the reference on the Label which shows the current player
     QLabel *getLabelActuelPlayer();
+
+    //return the reference on the Label which shows the number of tiles which the player1 has removed
+    QLabel *getLabelRemovedTilePlayer1();
+
+    //return the reference on the Label which shows the number of tiles which the player2 has removed
+    QLabel *getLabelRemovedTilePlayer2();
+
 
     //change the text on the label which show the current player. The new value is the one which is given as parameter
     void setLabelActuelPlayer(QString text);

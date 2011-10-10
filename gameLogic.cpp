@@ -12,7 +12,6 @@ GameLogic::GameLogic(Player *p1, Player *p2, GameField *gameField, MainWindow *m
     connect(this->mainWindow->getSettingsDialog(), SIGNAL(rejected()), this, SLOT(checkDialogState()));
     mainWindow->setCentralWidget(gameField);
     actuelPlayer = this->chooseFirstPlayer();
-    isTileSelected = false;
     //somethingHasChanged = false;
     selectedTile = 0;
     destinationField = 0;
@@ -70,11 +69,12 @@ void GameLogic::restart(){
     this->player2 = new Player("player2", "red", "toTheBottom");
     this->mainWindow->setCentralWidget(gameField);
     actuelPlayer = this->chooseFirstPlayer();
-    isTileSelected = false;
     selectedTile = 0;
     destinationField = 0;
     takeAlsoTheNextTile = false;
     this->start();
+    this->gameField->getLabelRemovedTilePlayer1()->setText(" <img src= ':/images/redTile2.png'> : 00 ");
+    this->gameField->getLabelRemovedTilePlayer2()->setText(" <img src= ':/images/greenTile.png'> : 00 ");
 }
 
 void GameLogic::selectTile(){
@@ -507,6 +507,7 @@ void GameLogic::removeTile(int relativeRow, int relativeColumn){
     this->selectedTile->setColumn(this->destinationField->getColumn());
     destinationField->setTile(selectedTile);
     this->actuelPlayer->addAdverseRemovedTile();
+    this->updateNumberRemovedTile();
     this->showTheWinnerIfThereIsOne();
 
     if(!this->canTakeTile()){
@@ -537,6 +538,27 @@ void GameLogic::showTheWinnerIfThereIsOne(){
     if(this->actuelPlayer->getAdverseRemovedTile() == Data::NUMBER_TILES){
         QString s =  "The winner is : "+actuelPlayer->getName();
         QMessageBox::information(mainWindow, "Game over", s);
+    }
+}
+
+void GameLogic::updateNumberRemovedTile(){
+    QString newText = "";
+    if(actuelPlayer == player1){
+        newText += " <img src= ':/images/redTile2.png'> : ";
+        if(actuelPlayer->getAdverseRemovedTile() < 10){
+            newText += "0";
+        }
+        newText += QString::number(actuelPlayer->getAdverseRemovedTile());
+        newText += " ";
+        this->gameField->getLabelRemovedTilePlayer1()->setText(newText);
+    }else{
+         newText += " <img src= ':/images/greenTile.png'> : ";
+         if(actuelPlayer->getAdverseRemovedTile() < 10){
+             newText += "0";
+         }
+         newText += QString::number(actuelPlayer->getAdverseRemovedTile());
+         newText += " ";
+        this->gameField->getLabelRemovedTilePlayer2()->setText(newText);
     }
 }
 
